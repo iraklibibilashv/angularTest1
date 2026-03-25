@@ -10,3 +10,14 @@ import { RouterOutlet } from '@angular/router';
 export class App {
   protected readonly title = signal('angularTest1');
 }
+
+fetch ("https://restaurant.stepprojects.ge/api/Products/GetAll")
+.then(resp => resp.json())
+.then(data => {
+  console.log(data);
+  
+  
+})
+
+
+

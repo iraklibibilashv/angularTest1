@@ -1,6 +1,6 @@
-<header>
-  <img src="https://static.vecteezy.com/system/resources/previews/069/701/449/large_2x/delicious-chinese-food-platter-an-array-of-savory-dishes-photo.jpg" alt="">
-</header>
 <main>
-  
+  @for (el of products; track $index) {
+    <h2>{{el.id}}</h2>
+    <h2>{{el.name}}</h2>
+  }
 </main>

@@ -551,8 +551,18 @@ products = [
 
     "categoryId": 8 
 
-  } 
+  }
+   
 ]
+
+onClick(products:any) {
+  console.log(products.id);
+  console.log(products.name);
+  
+  
+
+  
+}
 
 }
 

@@ -1,6 +1,20 @@
 <main>
   @for (el of products; track $index) {
-    <h2>{{el.id}}</h2>
-    <h2>{{el.name}}</h2>
-  }
+<div class="card" (click)="onClick(el)">
+  <div class="card-img">
+    <img [src]="el.image" alt="">
+  </div>
+
+  <div class="card-body">
+    <h3 class="card-title">{{el.name}}</h3>
+    <p class="card-price">$ {{el.price}}</p>
+
+    <div class="card-info">
+      <span class="spicy">Spice {{el.spiciness}}</span>
+      <span class="nuts"> Nuts {{el.nuts}}</span>
+      <span class="veg"> Veg {{el.vegeterian}}</span>
+    </div>
+  </div>
+</div>
+}
 </main>

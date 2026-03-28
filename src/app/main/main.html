@@ -1,11 +1,19 @@
 <main>
     <div class="btnContainer">
+
+      <div class="sortIdContainer">
+      <button (click)="filterOnclick()">All</button>
         @for (item of buttons; track $index) {
             <button  (click)="filterOnclick(item.id)">
                 {{item.name}}</button>
         }
-        <button>By Price</button>
-        <button>By Spice</button>
+        </div>
+        <div class="sortByContainer">
+        <button (click)="byPriceAsc()">By Price ↓</button>
+        <button (click)="byPriceDesc()">By Price ↑</button>
+        <button (click)="bySpiceAsc()">By Spice ↓</button>
+        <button (click)="bySpiceDesc()">By Spice ↑</button>
+        </div>
     </div>
     <div class="menuGrid">
   @for (el of filterProducts; track $index) {

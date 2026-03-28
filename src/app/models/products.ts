@@ -1,11 +1,11 @@
 export class Products{
     id! : number;
     name? : string;
-    price? : number;
+    price! : number;
     image? : string;
     vegeterian? : boolean;
     nuts? : boolean;
-    spiciness? : number;
+    spiciness! : number;
     categoryId? : number;
     
     

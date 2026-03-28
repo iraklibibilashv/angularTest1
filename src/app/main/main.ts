@@ -81,8 +81,6 @@ export class Main {
   } 
 
 ] 
-  
-  
   products : Products[]= [
    
 
@@ -630,8 +628,38 @@ export class Main {
 
 filterProducts : Products[] = []
 filterButtons : Buttons[] = []
-filterOnclick(categoryId: number) {
+
+
+byPriceAsc() {
+  this.filterProducts = [...this.filterProducts].sort(
+    (a, b) => a.price - b.price
+  )
+}
+byPriceDesc() {
+  this.filterProducts = [...this.filterProducts].sort(
+    (a,b) => b.price - a.price
+  )
+}
+bySpiceAsc() {
+  this.filterProducts = [...this.filterProducts].sort(
+    (a,b) => a.spiciness - b.spiciness
+  )
+}
+bySpiceDesc() {
+  this.filterProducts = [...this.filterProducts].sort(
+    (a,b) => b.spiciness - a.spiciness
+  )
+}
+
+
+filterOnclick(categoryId?: number) {
+  if(!categoryId) {
+    this.filterProducts = this.products
+  }else {
+
+  
   this.filterProducts = this.products.filter(product => product.categoryId === categoryId)
+  }
 }
 
 onClick(products:any) {
@@ -642,4 +670,10 @@ onClick(products:any) {
 
   
 }
+
+
+allOnClick(product:Products[]) {
+  
+}
+
 }

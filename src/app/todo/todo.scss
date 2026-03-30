@@ -11,6 +11,21 @@
   width: 100%;
   max-width: 480px;
 }
+select {
+  padding: 9px 10px;
+  font-size: 0.9rem;
+  border: 1.5px solid #cecbf6;
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  color: #26215c;
+  cursor: pointer;
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: #7f77dd;
+  }
+}
 
 h1 {
   font-size: 1.5rem;

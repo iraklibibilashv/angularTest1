@@ -18,5 +18,8 @@ export class Tasks {
     id? : number;
     title? : string;
     completed? : boolean;
-    
+}
+export class Select {
+  name?: string;
+  value?: number;
 }

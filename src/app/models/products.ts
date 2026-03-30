@@ -14,3 +14,9 @@ export class Buttons {
     id! : number;
     name? : string;
 }
+export class Tasks {
+    id? : number;
+    title? : string;
+    completed? : boolean;
+    
+}

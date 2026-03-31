@@ -16,6 +16,7 @@ export class Todo {
   selectedValue: number = 1;
   newTask = ""
   sortOrder : `asc` | `desc` = `asc`;
+  azSortOrder :  `asc` | `desc` = `asc`;
   newCategory: string = 'Work';
   taskArr : any[] = []
   categories: string[] = ['Work', 'Personal', 'Study', 'Other'];
@@ -44,6 +45,14 @@ export class Todo {
       : b.value - a .value;
       
     })
+  }
+  toggleSortAZ(){
+     this.azSortOrder = this.azSortOrder === `asc` ? `desc` : `asc`;
+     this.taskArr.sort((a,b) => {
+      return this.azSortOrder === `asc`
+      ? a.title.trim().localeCompare(b.title.trim())
+      : b.title.trim().localeCompare(a.title.trim())
+     })
   }
   
   toggleDark(){

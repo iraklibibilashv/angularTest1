@@ -21,8 +21,10 @@
 
     <button class="btn-add" (click)="addTask()">Add</button>
   </div>
+  <div class="buttons">
   <button class="btn-add" (click)="toggleSortSelect()">Sort {{ sortOrder === 'asc' ? '↑' : '↓' }}</button>
-
+  <button class="btn-add" (click)="toggleSortAZ()"> A-Z {{ azSortOrder === 'asc' ? '↑' : '↓' }}</button>
+</div>
   <div class="tasks">
     @for (item of taskArr; track $index) {
       <div class="row">

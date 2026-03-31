@@ -10,6 +10,10 @@
 :host(.dark) {
   background-color: #1a1830;
 }
+.buttons {
+  display: flex;
+  gap: 10px;
+}
 .wrapper {
   width: 100%;
   max-width: 560px;

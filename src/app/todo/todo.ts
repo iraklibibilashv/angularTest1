@@ -45,13 +45,6 @@ export class Todo {
     this.editId =  null;
   }
 
-
-
-
-
-
-
-
   getPriorityClass(value: number) {
   if (value >= 1 && value <= 3) return 'high';
   if (value >= 4 && value <= 7) return 'medium';

@@ -16,11 +16,11 @@ export class Buttons {
 }
 export class Tasks {
     id? : number;
-    title? : string;
+    title! : string;
     completed? : boolean;
     priority? : number;
     category? : string;
-    value? : number;
+    value! : number;
 }
 export class Select {
   name?: string;

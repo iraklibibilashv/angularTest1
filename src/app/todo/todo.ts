@@ -20,8 +20,12 @@ export class Todo {
   sortOrder : `asc` | `desc` = `asc`;
   azSortOrder :  `asc` | `desc` = `asc`;
   newCategory: string = 'Work';
-  taskArr : any[] = []
+  taskArr : Tasks[] = []
   categories: string[] = ['Work', 'Personal', 'Study', 'Other'];
+  filterProducts : Tasks[] = []
+  filterCategory : string = "All";
+  filterTitle : Tasks[] = []
+  name = ""
   
 
 @HostBinding('class.dark') get isDark() {
@@ -31,6 +35,8 @@ export class Todo {
   ngOnInit(){
       this.taskArr = JSON.parse(localStorage.getItem("taskToken") || "[]" )
       document.body.style.backgroundColor = '#f4f3ff';
+      this.filterTitle = [...this.taskArr]
+      this.filter()
   }
   startEdit(item : any) {
     this.editId = item.id;
@@ -45,6 +51,19 @@ export class Todo {
     this.editId =  null;
   }
 
+  filter(){
+    this.filterProducts = this.taskArr
+    this.filterProducts = this.taskArr.filter(el => 
+      el.title?.toLowerCase().includes(this.name.toLowerCase()) && (this.filterCategory === `All` || el.category === this.filterCategory)
+  )
+  }
+  get filteredTasks() {
+    if(this.filterCategory === "All") {
+      return this.taskArr
+    }
+    return this.taskArr.filter(task => task.category === this.filterCategory)
+  }
+
   getPriorityClass(value: number) {
   if (value >= 1 && value <= 3) return 'high';
   if (value >= 4 && value <= 7) return 'medium';
@@ -54,7 +73,7 @@ export class Todo {
 
   toggleSortSelect(){
     this.sortOrder = this.sortOrder === `asc` ? `desc` : `asc`;
-    this.taskArr.sort((a,b) => {
+    this.filterProducts.sort((a,b) => {
       return this.sortOrder === `asc`
       ? a.value - b.value
       : b.value - a .value;
@@ -63,7 +82,7 @@ export class Todo {
   }
   toggleSortAZ(){
      this.azSortOrder = this.azSortOrder === `asc` ? `desc` : `asc`;
-     this.taskArr.sort((a,b) => {
+     this.filterProducts.sort((a,b) => {
       return this.azSortOrder === `asc`
       ? a.title.trim().localeCompare(b.title.trim())
       : b.title.trim().localeCompare(a.title.trim())
@@ -87,6 +106,7 @@ export class Todo {
     this.newTask = ""
     console.log(this.taskArr);
     this.localStorageSetItem()
+    this.filter()
     
   }
 
@@ -99,6 +119,7 @@ export class Todo {
   deleteTask(obj : any){
     this.taskArr = this.taskArr.filter(ele => ele.id != obj.id)
      this.localStorageSetItem()
+     this.filter()
 
   }
 

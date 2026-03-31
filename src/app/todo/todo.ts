@@ -12,6 +12,8 @@ import { Select, Tasks } from '../models/products';
   styleUrl: './todo.scss',
 })
 export class Todo {
+  editId : number | null = null
+  editTitle: string = ""
   darkMode: boolean = false;
   selectedValue: number = 1;
   newTask = ""
@@ -30,6 +32,26 @@ export class Todo {
       this.taskArr = JSON.parse(localStorage.getItem("taskToken") || "[]" )
       document.body.style.backgroundColor = '#f4f3ff';
   }
+  startEdit(item : any) {
+    this.editId = item.id;
+    this.editTitle = item.title;
+  }
+  saveEdit(item : any) {
+    item.title = this.editTitle;
+    this.editId = null;
+    this.localStorageSetItem();
+  }
+  cancelEdit() {
+    this.editId =  null;
+  }
+
+
+
+
+
+
+
+
   getPriorityClass(value: number) {
   if (value >= 1 && value <= 3) return 'high';
   if (value >= 4 && value <= 7) return 'medium';

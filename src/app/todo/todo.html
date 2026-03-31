@@ -26,8 +26,14 @@
   <button class="btn-add" (click)="toggleSortAZ()"> A-Z {{ azSortOrder === 'asc' ? '↑' : '↓' }}</button>
 </div>
   <div class="tasks">
-    @for (item of taskArr; track $index) {
+    @for (item of taskArr; track item.id) {
       <div class="row">
+        @if (editId === item.id) {
+        <input type="text" [(ngModel)]="editTitle" (keyup.enter)="saveEdit(item)" class="edit-input" />
+        <button class="btn-complete" (click)="saveEdit(item)">✅</button>
+        <button class="btn-delete" (click)="cancelEdit()">🚫</button>
+        }
+        @else {
         <span [className]="item.completed ? `done` : ``">{{ item.title }}</span>
         <span class="task-value"
         [ngClass]="getPriorityClass(item.value)">
@@ -38,7 +44,8 @@
         </span>
         <button class="btn-complete" (click)="completedTask(item)">✅</button>
         <button class="btn-delete" (click)="deleteTask(item)">❌</button>
-        <button class="btn-delete">✏️</button>
+        <button class="btn-delete" (click)="startEdit(item)">✏️</button>
+        }
       </div>
     }
   </div>

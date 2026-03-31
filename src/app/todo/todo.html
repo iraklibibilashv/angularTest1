@@ -1,6 +1,6 @@
 <div class="wrapper" [class.dark]="darkMode">
   <div class="header">
-    <h1>To Do List</h1>
+    <h1>To do List</h1>
     <div class="header-right">
       <button class="btn-dark" (click)="toggleDark()">{{ darkMode ? '☀️' : '🌙' }}</button>
     </div>
@@ -30,6 +30,9 @@
         <span class="task-value"
         [ngClass]="getPriorityClass(item.value)">
           {{ item.value }}
+        </span>
+        <span>
+            {{item.category}}
         </span>
         <button class="btn-complete" (click)="completedTask(item)">✅</button>
         <button class="btn-delete" (click)="deleteTask(item)">❌</button>

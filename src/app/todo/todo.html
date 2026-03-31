@@ -1,12 +1,12 @@
 <div class="wrapper" [class.dark]="darkMode">
-  <div class="header">
+  <div class="header">☀️
     <h1>To do List</h1>
     <div class="header-right">
-      <button class="btn-dark" (click)="toggleDark()">{{ darkMode ? '☀️' : '🌙' }}</button>
+      <button class="btn-dark" (click)="toggleDark()">{{ darkMode ? '' : '🌙' }}</button>
     </div>
   </div>
   <div class="inputs">
-    <input type="text" [(ngModel)]="newTask" placeholder="Enter Task" />
+    <input type="text" [(ngModel)]="newTask" (keyup.enter)="addTask()" placeholder="Enter Task" />
 
     <select [(ngModel)]="selectedValue">
       @for (item of selectArr; track $index) {
@@ -27,7 +27,6 @@
 </div>
 <div class="filters">
     <input type="text" [(ngModel)]="name" (ngModelChange)="filter()">
-     <!-- <label for="filter">By Category:</label> -->
      <select  id="filter" [(ngModel)]="filterCategory" (ngModelChange)="filter()">
         <option value="All">All Categories</option>
         @for (cat of categories; track $index) {

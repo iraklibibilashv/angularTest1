@@ -1,23 +1,40 @@
-<div class="wrapper">
-<h1>To Do List</h1>
-<input type="text" [(ngModel)]="newTask" placeholder="Enter Task"/>
- 
-<select name="" id="">
-    @for (item of selectArr; track $index){
-    <option [value]="item.value">{{item.name}}</option>
-    }
-</select>
+<div class="wrapper" [class.dark]="darkMode">
+  <div class="header">
+    <h1>To Do List</h1>
+    <div class="header-right">
+      <button class="btn-dark" (click)="toggleDark()">{{ darkMode ? '☀️' : '🌙' }}</button>
+    </div>
+  </div>
+  <div class="inputs">
+    <input type="text" [(ngModel)]="newTask" placeholder="Enter Task" />
 
-<button  class="btn-add" (click)="addTask()">Add</button>
+    <select [(ngModel)]="selectedValue">
+      @for (item of selectArr; track $index) {
+        <option [value]="item.value">{{ item.name }}</option>
+      }
+    </select>
+    <select [(ngModel)]="newCategory">
+      @for (categ of categories; track $index) {
+        <option [value]="categ">{{ categ }}</option>
+      }
+    </select>
 
+    <button class="btn-add" (click)="addTask()">Add</button>
+  </div>
+  <button class="btn-add" (click)="toggleSortSelect()">Sort {{ sortOrder === 'asc' ? '↑' : '↓' }}</button>
 
-<div class="tasks">
+  <div class="tasks">
     @for (item of taskArr; track $index) {
-        <div class="row">
-            <span  [className]="item.completed ? `done`: ``">{{item.title}}</span>
-            <button  class="btn-complete" (click)="completedTask(item)">✅</button>
-            <button   class="btn-delete" (click)="deleteTask(item)">❌</button>
-        </div>
+      <div class="row">
+        <span [className]="item.completed ? `done` : ``">{{ item.title }}</span>
+        <span class="task-value"
+        [ngClass]="getPriorityClass(item.value)">
+          {{ item.value }}
+        </span>
+        <button class="btn-complete" (click)="completedTask(item)">✅</button>
+        <button class="btn-delete" (click)="deleteTask(item)">❌</button>
+        <button class="btn-delete">✏️</button>
+      </div>
     }
-</div>
+  </div>
 </div>

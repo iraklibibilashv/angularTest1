@@ -18,8 +18,11 @@ export class Tasks {
     id? : number;
     title? : string;
     completed? : boolean;
+    priority? : number;
+    category? : string;
+    value? : number;
 }
 export class Select {
   name?: string;
-  value?: number;
+  value!: number;
 }

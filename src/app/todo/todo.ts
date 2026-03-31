@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Select, Tasks } from '../models/products';
 
@@ -7,26 +7,58 @@ import { Select, Tasks } from '../models/products';
 
 @Component({
   selector: 'app-todo',
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,],
   templateUrl: './todo.html',
   styleUrl: './todo.scss',
 })
 export class Todo {
+  darkMode: boolean = false;
+  selectedValue: number = 1;
+  newTask = ""
+  sortOrder : `asc` | `desc` = `asc`;
+  newCategory: string = 'Work';
+  taskArr : any[] = []
+  categories: string[] = ['Work', 'Personal', 'Study', 'Other'];
+  
+
+@HostBinding('class.dark') get isDark() {
+  return this.darkMode;
+}
 
   ngOnInit(){
-      this.taskArr = JSON.parse(localStorage.getItem("taskToken") || "" )
+      this.taskArr = JSON.parse(localStorage.getItem("taskToken") || "[]" )
+      document.body.style.backgroundColor = '#f4f3ff';
+  }
+  getPriorityClass(value: number) {
+  if (value >= 1 && value <= 3) return 'high';
+  if (value >= 4 && value <= 7) return 'medium';
+  if (value >= 8 && value <= 10) return 'low';
+  return '';
+}
+
+  toggleSortSelect(){
+    this.sortOrder = this.sortOrder === `asc` ? `desc` : `asc`;
+    this.taskArr.sort((a,b) => {
+      return this.sortOrder === `asc`
+      ? a.value - b.value
+      : b.value - a .value;
+      
+    })
+  }
+  
+  toggleDark(){
+    this.darkMode = !this.darkMode
+    document.body.style.backgroundColor = this.darkMode ? '#1a1830' : '#f4f3ff';
   }
 
-
-  newTask = ""
-  taskArr : any[] = []
-  
 
   addTask(){
     this.taskArr.push({
       id : this.taskArr.length+1,
       title : this.newTask,
-      completed : false
+      completed : false,
+      category : this.newCategory,
+      value : this.selectedValue
     })
     this.newTask = ""
     console.log(this.taskArr);

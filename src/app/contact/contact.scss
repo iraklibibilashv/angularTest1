@@ -1,32 +1,4 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-body {
-  font-family: 'Georgia', serif;
-  background: var(--bg-base);
-  color: var(--text-primary);
-  font-size: 14px;
-}
-
-:root {
-  --bg-base: #0d0d0d;
-  --bg-surface: #1a1a1a;
-  --bg-card: #222222;
-  --accent: #c8965a;
-  --accent-dim: #8a6338;
-  --text-primary: #f0ece4;
-  --text-secondary: #9a9488;
-  --text-muted: #5a554e;
-  --border: #2e2b27;
-  --danger: #c0392b;
-}
-.page {
-  background: var(--bg-base);
-  color: var(--text-primary);
-  font-size: 14px;
-}
+/* ── shared.css — common styles for all Savoria pages ── */
 *,
 *::before,
 *::after {
@@ -283,39 +255,98 @@ nav a.active {
 .highlight {
   color: var(--tp);
 }
-/* ════════════════════════════════
-   TABLET  (max-width: 1024px)
-════════════════════════════════ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--br);
+}
+.contact-form-side {
+  padding: 48px 40px;
+  border-right: 1px solid var(--br);
+}
+.contact-info-side {
+  padding: 48px 40px;
+  background: var(--surf);
+}
+.contact-info-side h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+.contact-info-side h3 span {
+  color: var(--ac);
+}
+.contact-card {
+  background: var(--card);
+  border: 1px solid var(--br);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.contact-card .icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(200, 150, 90, 0.12);
+  border: 1px solid rgba(200, 150, 90, 0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.contact-card h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.contact-card p {
+  font-size: 13px;
+  color: var(--ts);
+  line-height: 1.5;
+}
+.map-placeholder {
+  background: var(--card);
+  border: 1px solid var(--br);
+  border-radius: 12px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--ts);
+  font-size: 13px;
+  margin-top: 8px;
+}
+.map-placeholder .map-icon {
+  font-size: 32px;
+}
+/* ════ TABLET ════ */
 @media (max-width: 1024px) {
-  .header { padding: 0 20px; }
- 
-  nav a { padding: 8px 10px; font-size: 12px; }
- 
-  .page-hero { padding: 36px 20px; }
-  .page-hero h1 { font-size: 28px; }
+  .contact-form-side { padding: 36px 24px; }
+  .contact-info-side { padding: 36px 24px; }
 }
  
-/* ════════════════════════════════
-   MOBILE  (max-width: 768px)
-════════════════════════════════ */
+/* ════ MOBILE ════ */
 @media (max-width: 768px) {
-  .header { padding: 0 16px; height: 56px; }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
  
-  nav { display: none; }
+  .contact-form-side {
+    padding: 28px 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--br);
+  }
  
-  .nav-toggle { display: flex; }
+  .contact-info-side {
+    padding: 28px 16px;
+  }
  
-  .mobile-nav.open { display: flex; }
- 
-  .logo-text { font-size: 16px; }
-  .logo-sub  { display: none; }
- 
-  .cart-btn span:not(.badge) { display: none; }
-  .cart-btn { padding: 8px 12px; }
- 
-  .page-hero { padding: 32px 16px; }
-  .page-hero h1 { font-size: 24px; }
-  .page-hero p  { font-size: 13px; }
- 
-  .form-row { grid-template-columns: 1fr; }
+  .map-placeholder { height: 140px; }
 }

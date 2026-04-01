@@ -4,10 +4,15 @@ import { Footer } from './footer/footer';
 import { Header } from './header/header';
 import { Main } from './main/main';
 import { Todo } from './todo/todo';
+import { Home } from './home/home';
+import { Menu } from './menu/menu';
+import { Reservation } from './reservation/reservation';
+import { About } from './about/about';
+import { Contact } from './contact/contact';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, Footer, Main,Todo],
+  imports: [RouterOutlet, Header, Footer, Main,Todo , Home , Menu , Reservation, About , Contact]  ,
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

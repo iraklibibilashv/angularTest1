@@ -1,7 +1,77 @@
-<nav>
+<!-- <nav>
     <ul>
         <li><a>Home</a></li>
         <li><a routerLink="/main">Restaraunt</a></li>
         <li><a routerLink="/todo">To Do List</a></li>
     </ul>
-</nav>
+</nav> -->
+<div class="page">
+  <!-- HEADER label -->
+  <div
+    style="
+      padding: 8px 32px;
+      background: #111;
+      border-bottom: 1px solid #222;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    "
+  >
+    <span class="component-label">Header Component</span>
+    <span style="font-size: 11px; color: #5a554e">&lt;app-header&gt;</span>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">
+      <div class="logo-icon">🍽</div>
+      <div>
+        <span class="logo-text">SAVORIA</span>
+        <span class="logo-sub">Fine Dining</span>
+      </div>
+    </div>
+
+    <nav>
+      <a routerLink="/home" routerLinkActive="active">Home</a>
+      <a routerLink="/menu" routerLinkActive="active">Menu</a>
+      <a routerLink="/reservation" routerLinkActive="active">Reservations</a>
+      <a routerLink="/about" routerLinkActive="active">About</a>
+      <a routerLink="/contact" routerLinkActive="active">Contact</a>
+    </nav>
+
+    <div class="hdr-r">
+      <button class="cart-btn">🛒 Cart <span class="badge">3</span></button>
+      <div class="avatar">GK</div>
+      <div class="nav-toggle" (click)="toggleNav()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <div class="mobile-nav" [ngClass]="{ open: isMenuOpen }">
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a routerLink="/menu" routerLinkActive="active" (click)="toggleNav()">Menu</a>
+    <a routerLink="/reservation" routerLinkActive="active" (click)="toggleNav()">Reservations</a>
+    <a routerLink="/about" routerLinkActive="active" (click)="toggleNav()">About</a>
+    <a routerLink="/contact" routerLinkActive="active" (click)="toggleNav()">Contact</a>
+  </div>
+  <!-- <div class="header">
+    <div class="logo" routerLink="/home">
+      <div class="logo-ico n">🍽</div>
+      <div>
+        <span class="logo-text">SAVORIA</span>
+        <span class="logo-sub">Fine Dining</span>
+      </div>
+    </div>
+    <nav>
+      <a routerLink="/home" routerLinkActive="active">Home</a>
+      <a routerLink="/menu" routerLinkActive="active">Menu</a>
+      <a routerLink="/reservation" routerLinkActive="active">Reservations</a>
+      <a routerLink="/about" routerLinkActive="active">About</a>
+      <a routerLink="contact" routerLinkActive="active">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-btn">🛒 Cart <span class="cart-badge">3</span></button>
+      <div class="avatar">GK</div>
+    </div>
+  </div>
+</div> -->
+</div>

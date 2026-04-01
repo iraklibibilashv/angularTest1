@@ -38,6 +38,22 @@ export class Todo {
       this.filterTitle = [...this.taskArr]
       this.filter()
   }
+
+    addTask(){
+    this.taskArr.push({
+      id : Date.now(),
+      title : this.newTask,
+      completed : false,
+      category : this.newCategory,
+      value : this.selectedValue
+    })
+    this.newTask = ""
+    this.selectedValue = 1
+    console.log(this.taskArr);
+    this.localStorageSetItem()
+    this.filter()
+    
+  }
   startEdit(item : any) {
     this.editId = item.id;
     this.editTitle = item.title;
@@ -57,7 +73,7 @@ export class Todo {
       el.title?.toLowerCase().includes(this.name.toLowerCase()) && (this.filterCategory === `All` || el.category === this.filterCategory)
   )
   }
-  get filteredTasks() {
+  filteredTasks() {
     if(this.filterCategory === "All") {
       return this.taskArr
     }
@@ -95,20 +111,7 @@ export class Todo {
   }
 
 
-  addTask(){
-    this.taskArr.push({
-      id : this.taskArr.length+1,
-      title : this.newTask,
-      completed : false,
-      category : this.newCategory,
-      value : this.selectedValue
-    })
-    this.newTask = ""
-    console.log(this.taskArr);
-    this.localStorageSetItem()
-    this.filter()
-    
-  }
+
 
   completedTask(obj : any){
     obj.completed = !obj.completed

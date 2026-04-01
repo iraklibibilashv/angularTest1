@@ -14,6 +14,8 @@ import { Select, Tasks } from '../models/products';
 export class Todo {
   editId : number | null = null
   editTitle: string = ""
+  editValue : number = 1;
+  editCategory : string = "";
   darkMode: boolean = false;
   selectedValue: number = 1;
   newTask = ""
@@ -57,11 +59,16 @@ export class Todo {
   startEdit(item : any) {
     this.editId = item.id;
     this.editTitle = item.title;
+    this.editValue = item.value;
+    this.editCategory = item.category;
   }
   saveEdit(item : any) {
     item.title = this.editTitle;
+    item.value = this.editValue;
+    item.category = this.editCategory;
     this.editId = null;
     this.localStorageSetItem();
+    this.filter()
   }
   cancelEdit() {
     this.editId =  null;

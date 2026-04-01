@@ -39,6 +39,17 @@
       <div class="row">
         @if (editId === item.id) {
         <input type="text" [(ngModel)]="editTitle" (keyup.enter)="saveEdit(item)" class="edit-input" />
+        <select [(ngModel)]="editValue">
+          @for (val of selectArr; track $index) {
+            <option [value]="val.value">{{ val.name }}</option>
+          }
+        </select>
+        <select [(ngModel)]="editCategory">
+          @for (cate of categories; track $index) {
+            <option [value]="cate">{{ cate }}</option>
+            
+          }
+        </select>
         <button class="btn-complete" (click)="saveEdit(item)">✅</button>
         <button class="btn-delete" (click)="cancelEdit()">🚫</button>
         }

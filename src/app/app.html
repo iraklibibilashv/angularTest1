@@ -1,9 +1,10 @@
-<app-header></app-header>
+<app-header (cartClick)="cartRef.openCart()"></app-header>
 <!-- <app-main></app-main> -->
 <!-- <app-todo></app-todo> -->
  <!-- <app-home></app-home> -->
  <!-- <app-menu></app-menu> -->
  <router-outlet></router-outlet>
+ <app-cart #cartRef></app-cart>
 
 
 <app-footer></app-footer>

@@ -38,6 +38,10 @@ export const routes: Routes = [
     loadComponent : () => import("./contact/contact").then(m => m.Contact)
 },
 {
+    path : "cart",
+    loadComponent : () => import("./cart/cart").then(m => m.Cart)
+},
+{
     path : "**",
     loadComponent : () => import("./error/error").then(m => m.Error)
 },

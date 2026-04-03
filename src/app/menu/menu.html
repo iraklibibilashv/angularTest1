@@ -22,7 +22,7 @@
         <div class="food-name">{{item.name}}</div>
         <div class="food-desc">{{item.desc}}</div>
         <div class="food-footer">
-          <span class="food-price">{{item.price}}</span><button class="add-btn">+</button>
+          <span class="food-price">{{item.price}}</span><button class="add-btn" (click)="addToCart(item)">+</button>
         </div>
       </div>
     </div>

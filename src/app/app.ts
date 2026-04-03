@@ -9,10 +9,11 @@ import { Menu } from './menu/menu';
 import { Reservation } from './reservation/reservation';
 import { About } from './about/about';
 import { Contact } from './contact/contact';
+import { Cart } from './cart/cart';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, Footer, Main,Todo , Home , Menu , Reservation, About , Contact]  ,
+  imports: [RouterOutlet, Header, Footer, Main,Todo , Home , Menu , Reservation, About , Contact, Cart]  ,
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

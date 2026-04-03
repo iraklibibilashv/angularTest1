@@ -26,3 +26,11 @@ export class Select {
   name?: string;
   value!: number;
 }
+export class CartItem {
+    id! : number;
+    name! : string;
+    price! : number;
+    photo! : string;
+    quantity! : number
+
+}

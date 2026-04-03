@@ -1,0 +1,103 @@
+<!-- Overlay -->
+<div class="cart-overlay" [class.open]="isOpen" (click)="closeCart()"></div>
+
+<!-- Drawer -->
+<div class="cart-drawer" [class.open]="isOpen">
+  <!-- Header -->
+  <div class="cart-header">
+    <div class="cart-title">
+      <h2>Your Cart</h2>
+      <span class="cart-count">{{ cartItems.length }} items</span>
+    </div>
+    <button class="close-btn" (click)="closeCart()">✕</button>
+  </div>
+
+  <!-- Empty State -->
+  @if (cartItems.length === 0) {
+    <div class="cart-empty">
+      <div class="empty-icon">🛒</div>
+      <p>Your cart is empty</p>
+      <small>Add some delicious dishes to get started</small>
+    </div>
+  }
+
+  <!-- Items -->
+  @if (cartItems.length > 0) {
+    <div class="cart-items">
+      @for (item of cartItems; track item.id) {
+        <div class="cart-item">
+          <div class="item-img">
+            @if (item.photo) {
+              <img [src]="item.photo" [alt]="item.name" />
+            } @else {
+              <span class="item-emoji">🍽</span>
+            }
+          </div>
+          <div class="item-info">
+            <div class="item-name">{{ item.name }}</div>
+            <div class="item-price">{{ item.price }}</div>
+            <div class="item-controls">
+              <button class="qty-btn" (click)="decrease(item)">−</button>
+              <span class="qty-val">{{ item.quantity }}</span>
+              <button class="qty-btn" (click)="increase(item)">+</button>
+            </div>
+          </div>
+          <button class="remove-btn" (click)="removeItem(item)">✕</button>
+        </div>
+      }
+    </div>
+
+    <!-- Footer -->
+    <div class="cart-footer">
+      <!-- Promo Code -->
+      <div class="promo-section">
+        <div class="promo-row">
+          <input
+            type="text"
+            class="promo-input"
+            placeholder="Promo code"
+            [(ngModel)]="promoCode"
+            [disabled]="promoApplied"
+          />
+          <button class="promo-btn" (click)="applyPromo()" [disabled]="promoApplied">
+            {{ promoApplied ? 'Applied' : 'Apply' }}
+          </button>
+        </div>
+        @if (promoApplied) {
+          <div class="promo-msg success">✓ 10% discount applied</div>
+        }
+        @if (promoError) {
+          <div class="promo-msg error">✕ Invalid promo code</div>
+        }
+      </div>
+
+      <!-- Totals -->
+      <div class="totals">
+        <div class="total-row">
+          <span>Subtotal</span>
+          <span>₾ {{ subtotal.toFixed(2) }}</span>
+        </div>
+        @if (promoApplied) {
+          <div class="total-row">
+            <span class="discount-label">Discount (10%)</span>
+            <span class="discount-val">− ₾ {{ discount.toFixed(2) }}</span>
+          </div>
+        }
+        <div class="total-row">
+          <span>Delivery</span>
+          <span>₾ 3.00</span>
+        </div>
+        <div class="total-row grand">
+          <span>Total</span>
+          <span>₾ {{ total.toFixed(2) }}</span>
+        </div>
+      </div>
+
+      <!-- Checkout -->
+      <button class="checkout-btn" routerLink="/checkout" (click)="closeCart()">
+        Proceed to Checkout →
+      </button>
+    </div>
+  }
+
+</div>
